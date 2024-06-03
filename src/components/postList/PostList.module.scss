@@ -5,24 +5,6 @@
   // Align text to the left
   text-align: left;
 
-  // Styles for the search input field
-  input[type="text"] {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid $primary-color;
-    border-radius: 4px;
-    width: 50%;
-    box-sizing: border-box;
-    transition: border-color 0.3s, background-color 0.3s;
-    margin-bottom: 20px; // Space below the search bar
-
-    // Styles for the input field when focused
-    &:focus {
-      outline: none;
-      border-color: $secondary-color;
-    }
-  }
-
   ul {
     // Remove default list styling
     list-style: none;

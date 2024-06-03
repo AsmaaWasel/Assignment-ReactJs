@@ -14,11 +14,21 @@
     align-items: center;
     margin-bottom: 20px;
 
+    a {
+      text-decoration: none; // Remove underline from anchor tag
+    }
+
+    h1 {
+      // Style the heading
+      margin: 0;
+      color: $secondary-color; // Apply primary color
+    }
+
     .searchBar {
       // Style the search bar input field
       padding: 12px;
       font-size: 16px;
-      border: 1px solid $secondary-color; // Use secondary color for border
+      border: 2px solid $primary-color; // Use secondary color for border
       border-radius: 8px;
       width: 300px;
       transition: border-color 0.3s, background-color 0.3s; // Smooth transition for border and background color
@@ -26,7 +36,7 @@
       &:focus {
         // Style the search bar when focused
         outline: none;
-        border-color: $accent-color; // Use accent color for focused border
+        border-color: $secondary-color; // Use accent color for focused border
       }
     }
   }

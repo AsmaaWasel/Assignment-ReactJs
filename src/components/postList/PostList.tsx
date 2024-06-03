@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import styles from "./PostList.module.scss";
+import React from "react";
 import { Post } from "../../interfaces/post";
+import styles from "./PostList.module.scss"; // Import the styles
 
 /**
  * Props for the PostList component.
@@ -17,44 +17,21 @@ type PostListProps = {
 };
 
 /**
- * PostList component that displays a list of posts and a search bar.
- * Allows filtering posts by their title.
+ * Component that renders a list of posts.
  *
  * @param {PostListProps} props - The props for the component.
- * @returns {JSX.Element} The rendered PostList component.
+ * @returns {JSX.Element} - Rendered component.
  */
 const PostList: React.FC<PostListProps> = ({ posts, onPostClick }) => {
-  // State for the search query
-  const [searchQuery, setSearchQuery] = useState<string>("");
-
-  /**
-   * Handles changes to the search input field.
-   *
-   * @param {React.ChangeEvent<HTMLInputElement>} event - The change event from the input field.
-   */
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value);
-  };
-
-  // Filter posts based on the search query
-  const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
   return (
     <div className={styles.postList}>
-      {/* Search input field */}
-      <input
-        type="text"
-        className={styles.searchBar}
-        placeholder="Search posts by title"
-        value={searchQuery}
-        onChange={handleSearchChange}
-      />
+      {" "}
+      {/* Apply the postList class */}
       <ul>
-        {/* Map over filtered posts and render list items */}
-        {filteredPosts.map((post) => (
+        {posts.map((post) => (
           <li key={post.id} onClick={() => onPostClick(post)}>
+            {" "}
+            {/* Handle click event */}
             <h3>{post.title}</h3>
             <p>{post.body}</p>
           </li>
