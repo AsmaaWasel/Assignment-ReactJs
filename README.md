@@ -32,7 +32,7 @@ Make sure you have the following installed on your machine:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/AsmaaWasel/Assignment-ReactJs.git
    cd your-repo-name
    ```
 
