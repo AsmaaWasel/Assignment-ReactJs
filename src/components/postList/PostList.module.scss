@@ -1,9 +1,11 @@
-// src/components/postList/PostList.module.scss
+// Import variables for color and other styling
 @import "../../styles/variables";
 
 .postList {
+  // Align text to the left
   text-align: left;
 
+  // Styles for the search input field
   input[type="text"] {
     padding: 10px;
     font-size: 16px;
@@ -12,8 +14,9 @@
     width: 50%;
     box-sizing: border-box;
     transition: border-color 0.3s, background-color 0.3s;
-    margin-bottom: 20px; // Added margin from bottom
+    margin-bottom: 20px; // Space below the search bar
 
+    // Styles for the input field when focused
     &:focus {
       outline: none;
       border-color: $secondary-color;
@@ -21,11 +24,13 @@
   }
 
   ul {
+    // Remove default list styling
     list-style: none;
     padding: 0;
     margin: 0;
 
     li {
+      // Change cursor to pointer on hover
       cursor: pointer;
       border: 1px solid $secondary-color;
       border-radius: 8px;
@@ -35,12 +40,14 @@
       overflow: hidden;
       box-sizing: border-box;
 
+      // Transform and add shadow on hover
       &:hover {
         transform: translateY(-3px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
 
       h3 {
+        // Styles for the post title
         margin: 0;
         color: $text-color;
         font-size: 24px;
@@ -48,6 +55,7 @@
       }
 
       p {
+        // Styles for the post body
         margin: 0;
         color: $text-color;
         font-size: 16px;
@@ -55,5 +63,6 @@
     }
   }
 
+  // Background color for the post list container
   background-color: $background-color;
 }

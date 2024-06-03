@@ -1,33 +1,38 @@
-// src/styles/App.module.scss
+// Import variables from the variables file
 @import "./variables";
 
 .App {
+  // Set the font family for the entire app
   font-family: Arial, sans-serif;
   padding: 20px;
   margin: 0 auto;
-}
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
+  .header {
+    // Style the header with flexbox for layout
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 
-.searchBar {
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid $secondary-color;
-  border-radius: 8px;
-  width: 300px;
-  transition: border-color 0.3s, background-color 0.3s;
-}
+    .searchBar {
+      // Style the search bar input field
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid $secondary-color; // Use secondary color for border
+      border-radius: 8px;
+      width: 300px;
+      transition: border-color 0.3s, background-color 0.3s; // Smooth transition for border and background color
 
-.searchBar:focus {
-  outline: none;
-  border-color: $accent-color;
-}
+      &:focus {
+        // Style the search bar when focused
+        outline: none;
+        border-color: $accent-color; // Use accent color for focused border
+      }
+    }
+  }
 
-.content {
-  margin-top: 20px;
+  .content {
+    // Margin on top of content section
+    margin-top: 20px;
+  }
 }

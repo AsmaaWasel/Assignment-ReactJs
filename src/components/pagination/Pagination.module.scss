@@ -1,4 +1,8 @@
-// src/components/pagination/Pagination.module.scss
+/**
+ * Styles for Pagination component.
+ * @desc Styles for the pagination buttons and page number display.
+ */
+
 @import "../../styles/variables";
 
 .pagination {
@@ -10,16 +14,16 @@
   button {
     margin: 0 10px;
     padding: 5px 10px;
-    border: 1px solid $primary-color;
+    border: 1px solid $primary-color; /* Border color */
     border-radius: 4px;
     cursor: pointer;
-    background-color: $primary-color;
-    color: #ffffff;
+    background-color: $primary-color; /* Background color */
+    color: #ffffff; /* Text color */
     transition: background-color 0.3s, border-color 0.3s;
   }
 
   button:disabled {
-    background-color: #cccccc;
+    background-color: #cccccc; /* Disabled button background color */
     cursor: not-allowed;
   }
 

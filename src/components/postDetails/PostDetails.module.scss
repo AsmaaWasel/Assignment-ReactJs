@@ -1,33 +1,36 @@
-// src/components/postDetails/PostDetails.module.scss
-@import "../../styles/variables";
+/**
+ * Styles for the PostDetails component.
+ */
+
+@import "../../styles/variables"; // Import variables
 
 .postDetails {
-  text-align: left;
-  padding: 20px;
-  border: 1px solid $secondary-color;
-  border-radius: 8px;
-  margin-top: 20px;
-  overflow: hidden;
-  box-sizing: border-box;
-  background-color: $background-color;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+  text-align: left; /* Text alignment */
+  padding: 20px; /* Padding */
+  border: 1px solid $secondary-color; /* Border */
+  border-radius: 8px; /* Border radius */
+  margin-top: 20px; /* Top margin */
+  overflow: hidden; /* Overflow */
+  box-sizing: border-box; /* Box sizing */
+  background-color: $background-color; /* Background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
 
-h2 {
-  margin-top: 0;
-}
+  h2 {
+    margin-top: 0; /* Reset top margin */
+  }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  ul {
+    list-style: none; /* Remove list style */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
 
-li {
-  border-bottom: 1px solid #eee;
-  padding: 10px 0;
-}
+    li {
+      border-bottom: 1px solid #eee; /* Border bottom */
+      padding: 10px 0; /* Padding */
 
-li:last-child {
-  border-bottom: none;
+      &:last-child {
+        border-bottom: none; /* Remove border bottom for last child */
+      }
+    }
+  }
 }

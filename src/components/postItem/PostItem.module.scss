@@ -1,24 +1,27 @@
-// src/components/PostItem.module.scss
+/**
+ * Styles for the PostItem component.
+ */
+
 .postItem {
-  background-color: #fff;
-  border: 1px solid $secondary-color;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  background-color: #fff; /* Background color */
+  border: 1px solid $secondary-color; /* Border color */
+  border-radius: 8px; /* Border radius */
+  padding: 20px; /* Padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+  transition: transform 0.3s ease; /* Transition effect */
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px); /* Transform effect on hover */
   }
 
   h2 {
-    font-size: 1.5em;
-    color: #2a2a72;
-    margin-bottom: 10px;
+    font-size: 1.5em; /* Font size for post title */
+    color: #2a2a72; /* Text color for post title */
+    margin-bottom: 10px; /* Bottom margin for post title */
   }
 
   p {
-    font-size: 1em;
-    color: #666;
+    font-size: 1em; /* Font size for post body */
+    color: #666; /* Text color for post body */
   }
 }
