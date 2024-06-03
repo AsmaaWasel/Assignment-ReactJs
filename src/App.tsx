@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.tsx
+import React, { useState } from "react";
+import styles from "./styles/App.module.scss";
+import { Post } from "./interfaces/post";
+import PostDetails from "./components/postDetails/PostDetails";
+import PostList from "./components/postList/PostList";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+
+  const handlePostClick = (post: Post) => {
+    setSelectedPost(post);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className={styles.App}>
+      <div className={styles.greeting}>Hello, Guest</div>
+      <div className={styles.content}>
+        <h1>Posts</h1>
+        {selectedPost ? (
+          <PostDetails post={selectedPost} />
+        ) : (
+          <PostList onPostClick={handlePostClick} />
+        )}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default App
+export default App;
