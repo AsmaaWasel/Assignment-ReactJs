@@ -1,38 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./PostList.module.scss";
 import { Post } from "../../interfaces/post";
 
-// Define PostListProps type
 type PostListProps = {
+  posts: Post[];
   onPostClick: (post: Post) => void;
-  searchQuery: string;
 };
 
-const PostList: React.FC<PostListProps> = ({ onPostClick, searchQuery }) => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+const PostList: React.FC<PostListProps> = ({ posts, onPostClick }) => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((data) => {
-        setPosts(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
-    return <p>Loading posts...</p>;
-  }
-
-  if (error) {
-    return <p>Error loading posts: {error}</p>;
-  }
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+  };
 
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -40,6 +20,13 @@ const PostList: React.FC<PostListProps> = ({ onPostClick, searchQuery }) => {
 
   return (
     <div className={styles.postList}>
+      <input
+        type="text"
+        className={styles.searchBar}
+        placeholder="Search posts by title"
+        value={searchQuery}
+        onChange={handleSearchChange}
+      />
       <ul>
         {filteredPosts.map((post) => (
           <li key={post.id} onClick={() => onPostClick(post)}>

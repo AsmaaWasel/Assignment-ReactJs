@@ -1,33 +1,33 @@
-/* src/styles/App.module.scss */
+// src/styles/App.module.scss
 @import "./variables";
 
 .App {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: $background-color;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  width: 100%;
+  font-family: Arial, sans-serif;
   padding: 20px;
+  margin: 0 auto;
+}
 
-  .content {
-    width: 100%;
-    background: $background-color; // Using background-color variable
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-    .searchBar {
-      padding: 10px;
-      width: calc(100% - 22px);
-      margin: 20px auto;
-      border: 1px solid $secondary-color; // Using secondary-color variable
-      border-radius: 4px;
-      font-size: 16px;
-      box-sizing: border-box;
-    }
-  }
+.searchBar {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid $secondary-color;
+  border-radius: 8px;
+  width: 300px;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.searchBar:focus {
+  outline: none;
+  border-color: $accent-color;
+}
+
+.content {
+  margin-top: 20px;
 }

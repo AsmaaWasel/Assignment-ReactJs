@@ -1,8 +1,24 @@
-/* src/components/postList/PostList.module.scss */
+// src/components/postList/PostList.module.scss
 @import "../../styles/variables";
 
 .postList {
   text-align: left;
+
+  input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid $primary-color;
+    border-radius: 4px;
+    width: 50%;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s;
+    margin-bottom: 20px; // Added margin from bottom
+
+    &:focus {
+      outline: none;
+      border-color: $secondary-color;
+    }
+  }
 
   ul {
     list-style: none;
@@ -11,28 +27,33 @@
 
     li {
       cursor: pointer;
-      border: 1px solid $secondary-color; // Using secondary-color variable
+      border: 1px solid $secondary-color;
       border-radius: 8px;
-      padding: 10px;
-      margin-bottom: 10px;
-      transition: background-color 0.3s;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
       overflow: hidden;
       box-sizing: border-box;
-      background: $primary-color; // Using primary-color variable
 
       &:hover {
-        background-color: $accent-color; // Using accent-color variable
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
 
       h3 {
         margin: 0;
-        color: $text-color; // Using text-color variable
+        color: $text-color;
+        font-size: 24px;
+        margin-bottom: 10px;
       }
 
       p {
-        margin: 5px 0 0;
-        color: $text-color; // Using text-color variable
+        margin: 0;
+        color: $text-color;
+        font-size: 16px;
       }
     }
   }
+
+  background-color: $background-color;
 }

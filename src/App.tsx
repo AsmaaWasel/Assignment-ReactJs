@@ -1,49 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./styles/App.module.scss";
 import { Post } from "./interfaces/post";
-import PostDetails from "./components/postDetails/PostDetails";
 import PostList from "./components/postList/PostList";
+import PostDetails from "./components/postDetails/PostDetails";
+import Pagination from "./components/pagination/Pagination"; // Assuming you've implemented Pagination
 
-/**
- * Main App component responsible for rendering the application.
- * @returns {JSX.Element} The rendered App component.
- */
 const App: React.FC = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1);
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
-  const [searchQuery, setSearchQuery] = useState<string>("");
 
-  /**
-   * Handles clicking on a post item.
-   * @param {Post} post - The selected post item.
-   */
+  useEffect(() => {
+    fetchPosts(currentPage);
+  }, [currentPage]);
+
+  const fetchPosts = (page: number) => {
+    fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=10`)
+      .then((response) => {
+        const totalCount = response.headers.get("X-Total-Count");
+        setTotalPages(Math.ceil(Number(totalCount) / 10));
+        return response.json();
+      })
+      .then((data) => {
+        setPosts(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching posts:", error);
+      });
+  };
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
   const handlePostClick = (post: Post) => {
     setSelectedPost(post);
   };
 
-  /**
-   * Handles changes in the search bar input.
-   * @param {React.ChangeEvent<HTMLInputElement>} event - The change event object.
-   */
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value);
-  };
-
   return (
     <div className={styles.App}>
+      <header className={styles.header}>
+        <h1>Posts</h1>
+      </header>
       <div className={styles.content}>
         {selectedPost ? (
           <PostDetails post={selectedPost} />
         ) : (
           <>
-            <h1>Posts</h1>
-            <input
-              type="text"
-              className={styles.searchBar}
-              placeholder="Search posts by title"
-              value={searchQuery}
-              onChange={handleSearchChange}
+            <PostList posts={posts} onPostClick={handlePostClick} />
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
             />
-            <PostList onPostClick={handlePostClick} searchQuery={searchQuery} />
           </>
         )}
       </div>

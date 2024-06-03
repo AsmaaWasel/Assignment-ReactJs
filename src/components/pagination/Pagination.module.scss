@@ -1,0 +1,30 @@
+// src/components/pagination/Pagination.module.scss
+@import "../../styles/variables";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  button {
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: 1px solid $primary-color;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: $primary-color;
+    color: #ffffff;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+
+  span {
+    font-size: 18px;
+    margin: 0 10px;
+  }
+}
