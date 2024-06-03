@@ -1,31 +1,38 @@
-/* src/components/PostList.module.scss */
+/* src/components/postList/PostList.module.scss */
+@import "../../styles/variables";
+
 .postList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
+  text-align: left;
 
-.postItem {
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 
-  &:hover {
-    transform: translateY(-5px);
-  }
+    li {
+      cursor: pointer;
+      border: 1px solid $secondary-color; // Using secondary-color variable
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+      transition: background-color 0.3s;
+      overflow: hidden;
+      box-sizing: border-box;
+      background: $primary-color; // Using primary-color variable
 
-  h2 {
-    font-size: 1.2em;
-    color: #333;
-    margin-bottom: 10px;
-  }
+      &:hover {
+        background-color: $accent-color; // Using accent-color variable
+      }
 
-  p {
-    font-size: 1em;
-    color: #666;
-    margin-bottom: 10px;
+      h3 {
+        margin: 0;
+        color: $text-color; // Using text-color variable
+      }
+
+      p {
+        margin: 5px 0 0;
+        color: $text-color; // Using text-color variable
+      }
+    }
   }
 }

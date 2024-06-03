@@ -1,51 +1,34 @@
-// src/components/postDetails/PostDetails.module.scss
+/* src/components/postDetails/PostDetails.module.scss */
+@import "../../styles/variables";
+
 .postDetails {
+  text-align: left;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid $secondary-color; // Using secondary-color variable
+  border-radius: 8px;
   margin-top: 20px;
-}
+  overflow: hidden;
+  box-sizing: border-box;
+  background: $background-color; // Using background-color variable
 
-.back {
-  margin-bottom: 20px;
-  cursor: pointer;
-  color: #2a2a72;
-  display: flex;
-  align-items: center;
-
-  svg {
-    margin-right: 5px;
+  h2 {
+    margin-top: 0;
+    color: $text-color; // Using text-color variable
   }
-}
 
-h2 {
-  font-size: 1.8em;
-  color: #2a2a72;
-  margin-bottom: 15px;
-}
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 
-p {
-  font-size: 1.2em;
-  color: #333;
-  margin-bottom: 15px;
-}
+    li {
+      border-bottom: 1px solid $secondary-color; // Using secondary-color variable
+      padding: 10px 0;
+      color: $text-color; // Using text-color variable
 
-h3 {
-  font-size: 1.4em;
-  color: #2a2a72;
-  margin-bottom: 10px;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  font-size: 1.1em;
-  color: #666;
-  margin-bottom: 10px;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
 }

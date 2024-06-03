@@ -1,11 +1,11 @@
-// src/components/postDetails/PostDetails.tsx
 import React, { useEffect, useState } from "react";
 import styles from "./PostDetails.module.scss";
 import { Post, Comment } from "../../interfaces/post";
 
-interface PostDetailsProps {
+// Define PostDetailsProps type
+type PostDetailsProps = {
   post: Post;
-}
+};
 
 const PostDetails: React.FC<PostDetailsProps> = ({ post }) => {
   const [comments, setComments] = useState<Comment[]>([]);

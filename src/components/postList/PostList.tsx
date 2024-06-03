@@ -1,14 +1,14 @@
-// src/components/PostList.tsx
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./PostList.module.scss";
 import { Post } from "../../interfaces/post";
-import PostItem from "../postItem/PostItem";
 
-interface PostListProps {
+// Define PostListProps type
+type PostListProps = {
   onPostClick: (post: Post) => void;
-}
+  searchQuery: string;
+};
 
-const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
+const PostList: React.FC<PostListProps> = ({ onPostClick, searchQuery }) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -34,11 +34,20 @@ const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
     return <p>Error loading posts: {error}</p>;
   }
 
+  const filteredPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className={styles.postList}>
-      {posts.map((post) => (
-        <PostItem key={post.id} post={post} onClick={() => onPostClick(post)} />
-      ))}
+      <ul>
+        {filteredPosts.map((post) => (
+          <li key={post.id} onClick={() => onPostClick(post)}>
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
