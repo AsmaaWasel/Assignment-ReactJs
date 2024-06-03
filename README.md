@@ -89,7 +89,7 @@ Make sure you have the following installed on your machine:
 
 ### Author
 
-- [Your Name](https://github.com/your-username)
+- Asmaa Mohammed https://github.com/AsmaaWasel/Assignment-ReactJs.git
 
 ### License
 
