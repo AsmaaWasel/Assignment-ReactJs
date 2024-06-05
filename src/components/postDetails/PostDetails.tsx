@@ -1,20 +1,30 @@
 /**
  * Displays details of a post including its title, body, and comments.
  *
- * @param post - The post object containing post details.
+ * @param {PostDetailsProps} props - Props for the PostDetails component.
  */
 import React, { useEffect, useState } from "react";
 import styles from "./PostDetails.module.scss";
 import { Post, Comment } from "../../interfaces/post";
 
+/**
+ * Props interface for the PostDetails component.
+ */
 type PostDetailsProps = {
   post: Post; // Post object containing post details
 };
 
+/**
+ * PostDetails component displays details of a post including its title, body, and comments.
+ * @param {PostDetailsProps} props - Props for the PostDetails component.
+ */
 const PostDetails: React.FC<PostDetailsProps> = ({ post }) => {
-  const [comments, setComments] = useState<Comment[]>([]); // State to store comments
-  const [loading, setLoading] = useState<boolean>(true); // State to track loading state
-  const [error, setError] = useState<string | null>(null); // State to store error message if any
+  // State to store comments
+  const [comments, setComments] = useState<Comment[]>([]);
+  // State to track loading state
+  const [loading, setLoading] = useState<boolean>(true);
+  // State to store error message if any
+  const [error, setError] = useState<string | null>(null);
 
   // Fetch comments for the post
   useEffect(() => {
