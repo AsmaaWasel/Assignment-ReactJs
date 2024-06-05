@@ -6,6 +6,7 @@
   font-family: Arial, sans-serif;
   padding: 20px;
   margin: 0 auto;
+  background-color: #cbe0dd;
 
   .header {
     // Style the header with flexbox for layout
@@ -21,7 +22,7 @@
     h1 {
       // Style the heading
       margin: 0;
-      color: $secondary-color; // Apply primary color
+      color: #2d4848; // Apply primary color
     }
 
     .searchBar {

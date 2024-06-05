@@ -1,34 +1,60 @@
-/**
- * Styles for Pagination component.
- * @desc Styles for the pagination buttons and page number display.
- */
-
-@import "../../styles/variables";
-
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+  margin: auto;
+  background-color: white;
+  border-radius: 5px;
+  width: 50vw;
 
-  button {
-    margin: 0 10px;
-    padding: 5px 10px;
-    border: 1px solid $primary-color; /* Border color */
-    border-radius: 4px;
+  .page__btn,
+  .page__numbers,
+  .page__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.8rem;
+    font-size: 1.4rem;
     cursor: pointer;
-    background-color: $primary-color; /* Background color */
-    color: #ffffff; /* Text color */
-    transition: background-color 0.3s, border-color 0.3s;
   }
 
-  button:disabled {
-    background-color: #cccccc; /* Disabled button background color */
-    cursor: not-allowed;
+  .page__btn {
+    color: var(--greyLight);
+    pointer-events: none;
+
+    &.active {
+      color: var(--greyDark);
+      pointer-events: initial;
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
   }
 
-  span {
-    font-size: 18px;
-    margin: 0 10px;
+  .page__numbers {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 0.4rem;
+
+    &:hover {
+      color: var(--primary);
+    }
+
+    &.active {
+      color: #ffffff;
+      background: var(--primary);
+      font-weight: 600;
+      border: 1px solid var(--primary);
+    }
+  }
+
+  .page__dots {
+    width: 2.6rem;
+    height: 2.6rem;
+    color: var(--greyLight);
+    cursor: initial;
   }
 }

@@ -1,50 +1,154 @@
-// Import variables for color and other styling
-@import "../../styles/variables";
+/* PostList.module.scss */
 
-.postList {
-  // Align text to the left
-  text-align: left;
+.blogContainer {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px; /* Increased margin-bottom */
+  padding: 20px;
+  transition: box-shadow 0.3s ease;
+  border: 1px solid #dddddd; /* Add border */
+  max-width: 600px; /* Limit width to center on the screen */
+  margin: 0 auto 40px; /* Center horizontally and add bottom margin */
+}
 
-  ul {
-    // Remove default list styling
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.blogContainer:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    li {
-      // Change cursor to pointer on hover
-      cursor: pointer;
-      border: 1px solid $secondary-color;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 20px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      overflow: hidden;
-      box-sizing: border-box;
+.blogHeader,
+.blogFooter {
+  margin: 0 auto;
+  width: 80%;
+}
 
-      // Transform and add shadow on hover
+.blogAuthor h3::before,
+.blogAuthorNoCover h3::before {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/17779/russ.jpeg");
+  background-size: cover;
+  border-radius: 50%;
+  content: " ";
+  display: inline-block;
+  height: 32px;
+  margin-right: 0.5rem;
+  position: relative;
+  top: 8px;
+  width: 32px;
+}
+
+.blogAuthor h3 {
+  color: #fff;
+  font-weight: 100;
+}
+
+.blogAuthorNoCover h3 {
+  color: #666666;
+  font-weight: 100;
+}
+
+.blogBody {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.blogTitle h1 a {
+  color: #333333;
+  font-weight: 100;
+}
+
+.blogSummary p {
+  color: #666666;
+}
+
+.blogTags ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0;
+
+  li + li {
+    margin-left: 0.5rem;
+  }
+
+  a {
+    border: 1px solid #666666;
+    border-radius: 3px;
+    color: #666666;
+    font-size: 0.75rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    letter-spacing: 1px;
+    padding: 0 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    width: 5rem;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border-color: #333333;
+      color: #333333;
+    }
+  }
+}
+
+.blogFooter {
+  border-top: 1px solid #dddddd;
+  padding-top: 10px;
+}
+
+.blogFooter ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-left: 0;
+
+  li {
+    color: #666666;
+    font-size: 0.75rem;
+    height: 1.5rem;
+    letter-spacing: 1px;
+    line-height: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    white-space: nowrap;
+
+    a {
+      color: #666666;
+      transition: color 0.3s ease;
+      margin-right: 5px;
+
       &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      h3 {
-        // Styles for the post title
-        margin: 0;
-        color: $text-color;
-        font-size: 24px;
-        margin-bottom: 10px;
-      }
-
-      p {
-        // Styles for the post body
-        margin: 0;
-        color: $text-color;
-        font-size: 16px;
+        color: #333333;
       }
     }
   }
 
-  // Background color for the post list container
-  background-color: $background-color;
+  .reacts {
+    display: flex;
+  }
+
+  .comments {
+    margin-right: auto;
+  }
+
+  .numero {
+    margin-right: auto;
+  }
+}
+
+.icon-star,
+.icon-bubble {
+  fill: #666666;
+  height: 24px;
+  margin-right: 0.5rem;
+  transition: fill 0.3s ease;
+  width: 24px;
+
+  &:hover {
+    fill: #ff4d4d;
+  }
 }

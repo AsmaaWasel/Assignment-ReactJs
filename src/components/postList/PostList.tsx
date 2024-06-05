@@ -1,42 +1,68 @@
 import React from "react";
 import { Post } from "../../interfaces/post";
-import styles from "./PostList.module.scss"; // Import the styles
+import styles from "./PostList.module.scss";
 
-/**
- * Props for the PostList component.
- */
-type PostListProps = {
-  /**
-   * Array of posts to display.
-   */
+interface PostListProps {
   posts: Post[];
-  /**
-   * Function to call when a post is clicked.
-   */
   onPostClick: (post: Post) => void;
-};
+}
 
-/**
- * Component that renders a list of posts.
- *
- * @param {PostListProps} props - The props for the component.
- * @returns {JSX.Element} - Rendered component.
- */
 const PostList: React.FC<PostListProps> = ({ posts, onPostClick }) => {
   return (
-    <div className={styles.postList}>
-      {" "}
-      {/* Apply the postList class */}
-      <ul>
-        {posts.map((post) => (
-          <li key={post.id} onClick={() => onPostClick(post)}>
-            {" "}
-            {/* Handle click event */}
-            <h3>{post.title}</h3>
-            <p>{post.body}</p>
-          </li>
-        ))}
-      </ul>
+    <div>
+      {posts.map((post) => (
+        <div className={styles.blogContainer} key={post.id}>
+          <div className={styles.blogHeader}>
+            <div className={styles.blogAuthorNoCover}>
+              <h3>Russ Beye</h3>
+            </div>
+          </div>
+          <div className={styles.blogBody}>
+            <div className={styles.blogTitle}>
+              <h1>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onPostClick(post);
+                  }}
+                >
+                  {post.title}
+                </a>
+              </h1>
+            </div>
+            <div className={styles.blogSummary}>
+              <p>{post.body}</p>
+            </div>
+            <div className={styles.blogTags}>
+              <ul>
+                <li>
+                  <a href="#">design</a>
+                </li>
+                <li>
+                  <a href="#">web dev</a>
+                </li>
+                <li>
+                  <a href="#">css</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className={styles.blogFooter}>
+            <ul>
+              <li className={styles.publishedDate}>12 days ago</li>
+              <div className={styles.reacts}>
+                <li className={styles.comments}>
+                  <span className={styles.numero}>8❤️</span>
+                </li>
+                <li className={styles.shares}>
+                  <span className={styles.numero}>3🥰</span>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

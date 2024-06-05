@@ -1,17 +1,10 @@
-/**
- * Pagination component for navigating between pages.
- * @param currentPage The current page number.
- * @param totalPages The total number of pages.
- * @param onPageChange Function to handle page change.
- */
-
 import React from "react";
 import styles from "./Pagination.module.scss";
 
 type PaginationProps = {
-  currentPage: number; // Current page number
-  totalPages: number; // Total number of pages
-  onPageChange: (pageNumber: number) => void; // Function to handle page change
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (pageNumber: number) => void;
 };
 
 const Pagination: React.FC<PaginationProps> = ({
@@ -19,33 +12,56 @@ const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   onPageChange,
 }) => {
-  /**
-   * Handles the click event for navigating to the previous page.
-   */
   const handlePrevPage = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
     }
   };
 
-  /**
-   * Handles the click event for navigating to the next page.
-   */
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       onPageChange(currentPage + 1);
     }
   };
 
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <li
+          key={i}
+          className={`${styles.page__numbers} ${
+            i === currentPage ? styles.active : ""
+          }`}
+          onClick={() => onPageChange(i)}
+        >
+          {i}
+        </li>
+      );
+    }
+    return pageNumbers;
+  };
+
   return (
-    <div className={styles.pagination}>
-      <button onClick={handlePrevPage} disabled={currentPage === 1}>
-        Prev
-      </button>
-      <span>{currentPage}</span>
-      <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-        Next
-      </button>
+    <div id="app" className="container">
+      <ul className={styles.pagination}>
+        <li
+          className={`${styles.page__btn} ${
+            currentPage === 1 ? styles.disabled : ""
+          }`}
+          onClick={handlePrevPage}
+        ></li>
+        {renderPageNumbers()}
+        {totalPages > 6 && currentPage < totalPages - 3 && (
+          <li className={styles.page__dots}>...</li>
+        )}
+        <li
+          className={`${styles.page__btn} ${
+            currentPage === totalPages ? styles.disabled : ""
+          }`}
+          onClick={handleNextPage}
+        ></li>
+      </ul>
     </div>
   );
 };

@@ -1,8 +1,11 @@
+// App.tsx
+
 import React, { useEffect } from "react";
 import styles from "./styles/App.module.scss";
 import PostList from "./components/postList/PostList";
 import PostDetails from "./components/postDetails/PostDetails";
 import Pagination from "./components/pagination/Pagination";
+// Import the SearchBox component
 
 import {
   fetchPosts,
@@ -12,6 +15,7 @@ import {
 } from "./redux/slices/postsSlice";
 import { Post } from "./interfaces/post";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
+import SearchBox from "./components/searchBox/SearchBox";
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -34,8 +38,9 @@ const App: React.FC = () => {
     dispatch(setSelectedPost(null));
   };
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setSearchQuery(event.target.value));
+  // Handler for search query change
+  const handleSearch = (query: string) => {
+    dispatch(setSearchQuery(query));
   };
 
   const filteredPosts = posts.filter((post) =>
@@ -50,19 +55,13 @@ const App: React.FC = () => {
             {selectedPost && (
               <span className={styles.backIcon} onClick={handlePostListClick}>
                 &larr;{" "}
-                {/* or use <FontAwesomeIcon icon={faArrowLeft} /> if you're using FontAwesome */}
               </span>
             )}
             Posts
           </h1>
         </a>
-        <input
-          type="text"
-          className={styles.searchBar}
-          placeholder="Search posts by title"
-          value={searchQuery}
-          onChange={handleSearchChange}
-        />
+        {/* Replace the search input with the SearchBox component */}
+        <SearchBox onSearch={handleSearch} />
       </header>
       <div className={styles.content}>
         {selectedPost ? (
