@@ -98,3 +98,7 @@ Ensure that you have the following installed:
 ### License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+### Upcoming Updates
+
+Addition of tests using Jest with Vite and TypeScript in the React project.
