@@ -78,7 +78,7 @@ const App: React.FC = () => {
                 &larr;{" "}
               </span>
             )}
-            Posts
+            PostsBlog
           </h1>
         </a>
         {/* Render the search box */}
