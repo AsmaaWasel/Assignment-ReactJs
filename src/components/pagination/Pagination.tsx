@@ -20,14 +20,20 @@ const Pagination: React.FC<PaginationProps> = ({
   onPageChange,
 }) => {
   // Function to handle previous page button click
-  const handlePrevPage = () => {
+  const handlePrevPage = (
+    event: React.MouseEvent<HTMLLIElement, MouseEvent>
+  ) => {
+    event.preventDefault();
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
     }
   };
 
   // Function to handle next page button click
-  const handleNextPage = () => {
+  const handleNextPage = (
+    event: React.MouseEvent<HTMLLIElement, MouseEvent>
+  ) => {
+    event.preventDefault();
     if (currentPage < totalPages) {
       onPageChange(currentPage + 1);
     }

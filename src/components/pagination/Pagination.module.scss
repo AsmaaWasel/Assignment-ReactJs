@@ -5,9 +5,10 @@
   list-style: none;
   padding: 0;
   margin: auto;
-  background-color: white;
+  background-color: #2d4848;
   border-radius: 5px;
-  width: 50vw;
+  max-width: 90%;
+  width: 70%;
 
   .page__btn,
   .page__numbers,
@@ -16,7 +17,7 @@
     justify-content: center;
     align-items: center;
     margin: 0.8rem;
-    font-size: 1.4rem;
+    font-size: calc(0.8rem + 0.3vw); /* Responsive font size */
     cursor: pointer;
   }
 
@@ -35,8 +36,8 @@
   }
 
   .page__numbers {
-    width: 2.6rem;
-    height: 2.6rem;
+    width: calc(2rem + 0.5vw); /* Responsive width */
+    height: calc(2rem + 0.5vw); /* Responsive height */
     border-radius: 0.4rem;
 
     &:hover {
@@ -52,8 +53,8 @@
   }
 
   .page__dots {
-    width: 2.6rem;
-    height: 2.6rem;
+    width: calc(2rem + 0.5vw); /* Responsive width */
+    height: calc(2rem + 0.5vw); /* Responsive height */
     color: var(--greyLight);
     cursor: initial;
   }
