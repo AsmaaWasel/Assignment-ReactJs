@@ -1,3 +1,4 @@
+// src/components/postList/PostList.tsx
 import React from "react";
 import { Post } from "../../interfaces/post";
 import styles from "./PostList.module.scss";
